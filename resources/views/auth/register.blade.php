@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">School E-Mail Address</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -57,6 +57,20 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                                                <div class="form-group{{ $errors->has('email_pref') ? ' has-error' : '' }}">
+                            <label for="email_pref" class="col-md-4 control-label">Contact E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email_pref" type="email_pref" class="form-control" name="email_pref" value="{{ old('email') }}" required>
+
+                                @if ($errors->has('email_pref'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email_pref') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

@@ -53,7 +53,6 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
-
     
 
     /**
@@ -67,9 +66,8 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'school' => $data['school'],
-            'email_pref' => $data['email_pref'],
             'password' => bcrypt($data['password']),
+            'email_pref' => $data['email_pref'],
         ]);
     }
 }
