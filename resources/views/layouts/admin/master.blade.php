@@ -118,7 +118,7 @@
     </header>
 
     <div class="app-body">
-        @include('layouts.admin.coreui.sidebar')
+        @include('layouts.admin.sidebar')
 
     <!-- Main content -->
     <main class="main">
@@ -147,7 +147,7 @@
         </div>
     </main>
 
-    @include('layouts.admin.coreui.aside-menu')
+    @include('layouts.admin.aside-menu')
        
     </div>
 
@@ -157,6 +157,8 @@
         </span>
     </footer>
 
+    @yield('scripts')
+    
     <!-- Bootstrap and necessary plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
@@ -166,11 +168,10 @@
     <!-- Plugins and scripts required by all views -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js"></script>
 
-    <!-- GenesisUI main scripts -->
 
     <script src="/coreui/js/app.js"></script>
 
-    <!-- Plugins and scripts required by this views -->
+    <!-- Plugins and scripts -->
     <script src="/coreui/js/libs/jquery.maskedinput.min.js"></script>
     <script src="/coreui/js/views/advanced-forms.js"></script>
 

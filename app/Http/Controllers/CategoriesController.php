@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Input;
 
-use App\Entries;
+use App\Category;
 
-class EntriesController extends Controller
+class CategoriesController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -23,7 +22,9 @@ class EntriesController extends Controller
      */
     public function index()
     {
-        return view('admin.entries.index');
+        $categories = Category::all();
+
+         return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -33,7 +34,7 @@ class EntriesController extends Controller
      */
     public function create()
     {
-        return view('admin.entries.create');
+        return view('admin.categories.create', compact('categories'));
     }
 
     /**
@@ -42,45 +43,45 @@ class EntriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        // dd(request()->all());
-        // Creat new event using request data
-
         $this->validate(request(), [
-
-            'title' => 'required',
-            'end'   =>  'required',
-            'short_info' => 'required',
-            'detailed_info' => 'required'
+            'name' => 'required',
+            'description' => 'required'
         ]);
+        
+        $request['is_hs'] = isset($request['is_hs']) ? 1 : 0;
+        $request['is_col'] = isset($request['is_col']) ? 1 : 0;
+        // echo $request['is_hs'];
 
-        Event::create(request(['title', 'end', 'website', 'phone', 'map', 'address', 'short_info', 'detailed_info']));
+        Category::create(request(['name', 'description', 'is_hs', 'is_col']));
 
         // Redirect
-        return redirect('/admin/entries');
-
-
+        return redirect('/admin/categories');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        // $category = Category::find($category);
+
+        // return $category;
+
+        return view('/admin/categories.show', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
     }
@@ -89,10 +90,10 @@ class EntriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -100,10 +101,10 @@ class EntriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
     }

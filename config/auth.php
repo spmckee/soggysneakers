@@ -18,6 +18,8 @@ return [
         'passwords' => 'users',
     ],
 
+    // Auth::guard('admin')->check($credentials)
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -69,6 +71,16 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
+        'judges' => [
+            'driver' => 'eloquent',
+            'model' => App\Judge::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',

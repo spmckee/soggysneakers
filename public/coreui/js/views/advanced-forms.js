@@ -2,7 +2,6 @@ $(function (){
   $("#date").mask("99/99/9999");
   $("#phone").mask("(999) 999-9999");
 
-  $('#select2-1, #select2-2, #select2-3, #select2-4').select2();
 
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',

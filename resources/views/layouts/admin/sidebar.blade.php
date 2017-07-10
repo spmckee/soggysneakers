@@ -2,7 +2,7 @@
             <nav class="sidebar-nav">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+                        <a class="nav-link" href="/admin"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
                     </li>
 
                     <li class="nav-title">
@@ -14,7 +14,19 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ current_page('events') ? 'active' : '' }}" href="/admin/events"><i class="icon-energy"></i> Events</a>
+                        <a class="nav-link {{ current_page('faq') ? 'active' : '' }}" href="/admin/faq"><i class="icon-cup"></i> FAQs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ current_page('categories') ? 'active' : '' }}" href="/admin/categories"><i class="icon-energy"></i> Categories</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ current_page('schools') ? 'active' : '' }}" href="/admin/schools"><i class="icon-energy"></i> Schools</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ current_page('events') ? 'active' : '' }}" href="/admin/events"><i class="icon-energy"></i> Emails</a>
                     </li>
 
                     <li class="divider"></li>

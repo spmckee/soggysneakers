@@ -11,57 +11,43 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/about', function () {
-//     return view('about');
-// });
-
-Route::get('/', 'HomeController@index');
-Route::get('/events', 'EventsController@index');
-Route::get('/entries', 'EntriesController@index');    
-
 Auth::routes();
 
-// Authentication Routes...
-// Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-// Route::post('login', 'Auth\LoginController@login');
-// Route::post('logout', 'Auth\LoginController@logout');
-
-// // Registration Routes...
-// Route::get('register', 'Auth\RegisterController@showRegistrationForm');
-// Route::post('register', 'Auth\RegisterController@register');
-
-// // Password Reset Routes...
-// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-// Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
 
 // ## Admin ##
-Route::get('/admin', 'Admin\AdminController@dashboard');
+Route::group(['prefix' => 'admin'], function () {
+   Route::get('login', 'AdminControllers\AuthController@initContent');
+});
 
-Route::get('/admin/events', 'Admin\EventsController@index');
-Route::get('/admin/entries', 'Admin\EntriesController@index');
 
-// Create
-Route::get('/admin/events/create', 'Admin\EventsController@create');
+Route::get('/admin', 'AdminController@dashboard');
 
-// Edit
-// Route::post('/admin/events/{id}/edit', 'Admin\EventsController@edit');
+// Users
+Route::get('/logout', 'Auth\LoginController@performLogout');
+Route::get('profile', function () {
+    // Only authenticated users may enter...
+})->middleware('auth');
 
-// Update
-// Route::post('/admin/events/{id}/edit', 'Admin\EventsController@edit');
-
-// Delete
-// Route::patch('/admin/{id}', 'Admin\EventsController@update');
 
 // Show
-Route::get('/admin/events/{post}', 'Admin\PostsController@show');
+Route::get('/admin/events/{post}', 'PostsController@show');
 
 // Save
-Route::post('/admin/events', 'Admin\EventsController@store');
+Route::post('/admin/events', 'EventsController@store');
+
+// FAQs
+Route::resource('faqs', 'FaqsController');
+
+// Schools
+Route::resource('/admin/schools', 'SchoolsController');
+
+// Categories
+// Route::resource('/admin/categories', 'CategoriesController');
+Route::get('/admin/categories', 'CategoriesController@index');
+Route::get('/admin/categories/create', 'CategoriesController@create');
+Route::get('/admin/categories/{category}', 'CategoriesController@show');
+
+// Entries
+Route::get('/admin/entries', 'EntriesController@index');
+Route::get('/admin/entries/{entry}', 'EntriesController@show');

@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-adasd
+    <h1>A Place to Show FAQs</h1>
+    <p>skfsdfkjhfd;skdfj</p>
 </div>
 
 @endsection

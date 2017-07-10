@@ -1,6 +1,13 @@
-@extends('layouts.admin.coreui.master')
+@extends('layouts.admin.master')
 
 @section('content')
+
+@foreach ($entries as $entry)
+
+<a href="/admin/entries/{{ $entry->id }}">{{ $entry->title }}</a>
+{{-- {{ $entry->created_at->toFormatDataString() }} --}}
+{{ $entry->created_at }}
+@endforeach
 
 <div class="col-lg-12">
     <div class="card">
