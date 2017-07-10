@@ -20,7 +20,6 @@ Route::group(['prefix' => 'admin'], function () {
    Route::get('login', 'AdminControllers\AuthController@initContent');
 });
 
-
 Route::get('/admin', 'AdminController@dashboard');
 
 // Users
@@ -28,7 +27,6 @@ Route::get('/logout', 'Auth\LoginController@performLogout');
 Route::get('profile', function () {
     // Only authenticated users may enter...
 })->middleware('auth');
-
 
 // Show
 Route::get('/admin/events/{post}', 'PostsController@show');
