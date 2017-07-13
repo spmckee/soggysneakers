@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Faq;
 use Illuminate\Http\Request;
 
-class FaqsController extends Controller
+class JudgingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class FaqsController extends Controller
      */
     public function index()
     {
-         $faqs = Faq::all();
-
-         return view('faqs.index', compact('faqs'));
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class FaqsController extends Controller
      */
     public function create()
     {
-        return view('faqs.create');
+        //
     }
 
     /**
@@ -43,21 +40,21 @@ class FaqsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Faq  $faq
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Faq $faq)
+    public function show($id)
     {
-        return view('faqs.show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Faq  $faq
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Faq $faq)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +63,10 @@ class FaqsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Faq  $faq
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faq $faq)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +74,10 @@ class FaqsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Faq  $faq
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faq $faq)
+    public function destroy($id)
     {
         //
     }

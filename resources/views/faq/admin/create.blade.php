@@ -2,10 +2,9 @@
 
 @section ('content')
 
-<h1>Entries</h1>
 <div class="card">
     <div class="card-header">
-        <strong>Entries</strong> Elements
+        <strong>New FAQ</strong>
     </div>
     <div class="card-block">
 
@@ -14,14 +13,14 @@
 
             <div class="form-group row">
                 <label class="col-md-2 form-control-label" for="text-input">Question</label>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <input type="text" id="question" name="question" class="form-control">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-md-2 form-control-label" for="text-input">Answer</label>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <textarea  name="answer" class="form-control" id="answer" rows="8"></textarea>
                 </div>
             </div>

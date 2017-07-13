@@ -122,13 +122,20 @@
 
     <!-- Main content -->
     <main class="main">
-        {{ Request::segment(3) }}
 
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item"><a href="#">Admin</a></li>
-            <li class="breadcrumb-item active">{{ current_page_pretty() }}</li>
+
+            <?php $path = ''; ?>
+
+            @for($i = 1; $i <= count(Request::segments()); $i++)
+
+                <?php $path = $path .'/'. Request::segment($i);?>
+
+                <li class="breadcrumb-item">
+                    <a href="<?php echo route('home').$path;?>">{{ ucfirst(Request::segment($i))}}</a>
+                </li>
+            @endfor
 
             <!-- Breadcrumb Menu-->
             <li class="breadcrumb-menu d-md-down-none">
